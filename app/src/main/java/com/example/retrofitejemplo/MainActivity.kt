@@ -14,7 +14,6 @@ import com.example.retrofitejemplo.ui.theme.RetrofitEjemploTheme
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
-
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,9 +31,10 @@ class MainActivity : ComponentActivity() {
 fun ReporteList(viewModel: ReporteViewModel = viewModel()) {
     val reportes = viewModel.reportes
 
-
     if (reportes.isEmpty()) {
-        Text("No hay reportes disponibles", modifier = Modifier.padding(16.dp))
+        Column(modifier = Modifier.padding(16.dp)) {
+            Text("No hay reportes disponibles")
+        }
     } else {
         LazyColumn(modifier = Modifier.padding(16.dp)) {
             items(reportes) { reporte ->
@@ -50,5 +50,4 @@ fun ReporteList(viewModel: ReporteViewModel = viewModel()) {
             }
         }
     }
-
 }

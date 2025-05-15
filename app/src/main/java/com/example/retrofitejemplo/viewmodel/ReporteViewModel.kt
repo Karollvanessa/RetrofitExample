@@ -14,8 +14,11 @@ class ReporteViewModel : ViewModel() {
     init {
         viewModelScope.launch {
             try {
-                reportes = RetrofitClient.api.getReportes()
+                val respuesta = RetrofitClient.api.getReportes()
+                println("✔ Se obtuvieron ${respuesta.size} reportes")
+                reportes = respuesta
             } catch (e: Exception) {
+                println("❌ Error: ${e.message}")
                 e.printStackTrace()
             }
         }
